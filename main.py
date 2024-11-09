@@ -4,10 +4,10 @@ from lexico import lexer
 import sintactico
 from sintactico import parser
 
-data = '''fOr(i=1 ; i<=10 ; i++){
+data = '''fOr(int i=1 ; i<=10 ; i++){
     res = i*5;
-    res = i*6;
-    res = i#8;
+    res = i*5;
+    res = i*5;
 }'''
 
 lexer.input(data)
