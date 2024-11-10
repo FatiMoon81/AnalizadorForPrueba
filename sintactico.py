@@ -66,9 +66,6 @@ def p_for_statement_1(p):
 def p_for_statement_2(p):
     'expression : palabraReservadaFOR PARENIZQ declaration_int logical_statement SEMICOLON increment_operator PARENDER LLAVEIZQ statement_list LLAVEDER'
 
-""" 
-Para quitar los WARNINGS se necesita hacer uso de todos los tokens declarados en lexico.py esten dentro de sintactico.py 
-"""
 def p_expression_invalido(p):
     'expression : INVALIDO'
     print(f"Error léxico: Caracter inválido '{p[1]}' encontrado")
@@ -83,6 +80,10 @@ def p_expression_string(p):
                   | COMILLAS CADENA COMILLAS'''
     print(f"Cadena encontrada: {p[2]}")
     p[0] = p[2]  # Puedes devolver el valor de la cadena si lo necesitas
+
+""" 
+Para quitar los WARNINGS se necesita hacer uso de todos los tokens declarados en lexico.py esten dentro de sintactico.py 
+"""
 
 def p_error(p):
     if p:

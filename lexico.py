@@ -73,7 +73,7 @@ t_ignore = ' \t'
 
 # Regla para manejar errores generales
 def t_error(t):
-    print("Caracter inválido '%s'" % t.value[0])
+    print("Error lexico: Caracter inválido '%s'" % t.value[0])
     t.lexer.skip(1)
 
 # Construir el analizador léxico
