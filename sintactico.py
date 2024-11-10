@@ -1,8 +1,6 @@
 import ply.yacc as yacc
 from lexico import tokens
 
-#Prueba de push
-
 precedence = (
     ('left', 'MAS', 'MENOS'),
     ('left', 'MULTI', 'DIVI'),
@@ -68,7 +66,28 @@ def p_for_statement_1(p):
 def p_for_statement_2(p):
     'expression : palabraReservadaFOR PARENIZQ declaration_int logical_statement SEMICOLON increment_operator PARENDER LLAVEIZQ statement_list LLAVEDER'
 
+""" 
+Para quitar los WARNINGS se necesita hacer uso de todos los tokens declarados en lexico.py esten dentro de sintactico.py 
+"""
+def p_expression_invalido(p):
+    'expression : INVALIDO'
+    print(f"Error léxico: Caracter inválido '{p[1]}' encontrado")
+    p[0] = None
+
+def p_cout_statement(p):
+    'expression : palabraReservadaCOUT LEFTSHIFT expression SEMICOLON'
+
+def p_expression_string(p):
+    '''expression : COMILLAS ID COMILLAS
+                  | COMILLAS NUM COMILLAS
+                  | COMILLAS CADENA COMILLAS'''
+    print(f"Cadena encontrada: {p[2]}")
+    p[0] = p[2]  # Puedes devolver el valor de la cadena si lo necesitas
+
 def p_error(p):
-    print("Error de sintaxis en la entrada:", p)
+    if p:
+        print(f"Error de sintaxis en la entrada: Token '{p.value}' en la línea {p.lineno}")
+    else:
+        print("Error de sintaxis al final del archivo")
 
 parser = yacc.yacc()

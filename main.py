@@ -11,7 +11,7 @@ data = '''fOr(int i=1 ; i<=10 ; i++){
     res = i*5;
     res = i*5;
     res = i*5;
-    cout << res << i << "Hola" ;
+    cout << res << i << "Hola" & 1for ;
 }'''
 
 lexer.input(data)

@@ -17,7 +17,7 @@ tokens = [
     'INCREMENT', 'DECREMENT',
     'MAS', 'MENOS', 'MULTI', 'DIVI', 'IGUAL',
     'SEMICOLON', 'COMILLAS', 'PARENIZQ', 'PARENDER', 'LLAVEIZQ', 'LLAVEDER',
-    'INVALIDO'  # Token para palabras no permitidas
+    'INVALIDO', 'CADENA'  # Token para palabras no permitidas
 ] + list(reservadas.values())
 
 # Expresiones regulares para tokens simples
@@ -41,6 +41,11 @@ t_PARENIZQ = r'\('
 t_PARENDER = r'\)'
 t_LLAVEIZQ = r'\{'
 t_LLAVEDER = r'\}'
+
+def t_CADENA(t):
+    r'\".*?\"'
+    t.value = t.value[1:-1]  # Eliminar las comillas del principio y el final
+    return t
 
 def t_palabraReservada(t):
     r'[a-zA-Z_]\w*'
