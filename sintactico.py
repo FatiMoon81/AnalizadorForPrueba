@@ -1,6 +1,8 @@
 import ply.yacc as yacc
 from lexico import tokens
 
+#Prueba de push
+
 precedence = (
     ('left', 'MAS', 'MENOS'),
     ('left', 'MULTI', 'DIVI'),

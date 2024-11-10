@@ -1,3 +1,6 @@
+import tkinter as tk
+from tkinter import ttk
+
 import lexico
 from lexico import lexer
 
@@ -8,6 +11,7 @@ data = '''fOr(int i=1 ; i<=10 ; i++){
     res = i*5;
     res = i*5;
     res = i*5;
+    cout << res << i << "Hola" ;
 }'''
 
 lexer.input(data)
@@ -21,3 +25,10 @@ while True:
 
 result = parser.parse(data)
 print(result)
+
+#Crear pantalla
+ventana = tk.Tk()
+ventana.title("Analizador Léxico y Sintáctico")
+ventana.geometry("1280x900")
+
+ventana.mainloop()
